@@ -7,6 +7,6 @@ export default Intro;
 
 const IntroConatiner = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 1000px;
   background: blue;
 `;

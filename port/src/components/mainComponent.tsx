@@ -1,12 +1,10 @@
 import { styled } from "styled-components";
-import LeftScreen from "./mainfirstpage/LeftScreen";
-import RightScreen from "./mainfirstpage/RightScreen";
-import Intro from "./intropage/intro";
+import FirstPage from "./mainfirstpage";
+import Intro from "./introPage/intro";
 const Main = () => {
   return (
     <MainContainer>
-      <LeftScreen />
-      <RightScreen />
+      <FirstPage />
       <Intro />
     </MainContainer>
   );
@@ -15,5 +13,6 @@ const Main = () => {
 export default Main;
 const MainContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 `;
