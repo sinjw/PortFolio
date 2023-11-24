@@ -1,16 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: boolean = false;
+interface ButtonState {
+  isClicked: boolean;
+}
 
-const bottonSlice = createSlice({
-  name: "buttonClicked",
-  initialState: initialState,
+const initialState: ButtonState = {
+  isClicked: false,
+};
+
+const buttonSlice = createSlice({
+  name: "button",
+  initialState,
   reducers: {
-    mainButton: (state: boolean, action) => {
-      state = action.payload;
+    clickButton: (state) => {
+      state.isClicked = true;
     },
   },
 });
 
-export const { mainButton } = bottonSlice.actions;
-export const mainButtonReducer = bottonSlice.reducer;
+export const { clickButton } = buttonSlice.actions;
+export default buttonSlice.reducer;

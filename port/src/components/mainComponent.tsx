@@ -1,9 +1,13 @@
-import { styled } from "styled-components";
-import FirstPage from "./mainfirstpage";
+import FirstPage from "./mainfirstpage/firstScreen";
 import Intro from "./introPage/intro";
+import styled, { css } from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "./../store/config";
 const Main = () => {
+  const isClicked = useSelector((state: RootState) => state.button.isClicked);
+
   return (
-    <MainContainer>
+    <MainContainer isClicked={isClicked}>
       <FirstPage />
       <Intro />
     </MainContainer>
@@ -11,8 +15,18 @@ const Main = () => {
 };
 
 export default Main;
-const MainContainer = styled.div`
+
+const MainContainer = styled.div<{ isClicked: boolean }>`
+  /* 공통 스타일 설정 */
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  /* isClicked 값에 따른 동적 스타일 설정 */
+  ${(props) =>
+    props.isClicked &&
+    css`
+      overflow: visible;
+
+      /* 다른 원하는 스타일 설정 추가 가능 */
+    `}
 `;
