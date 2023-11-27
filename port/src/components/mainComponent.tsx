@@ -21,6 +21,7 @@ const MainContainer = styled.div<{ isClicked: boolean }>`
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  min-width: 950px;
   /* isClicked 값에 따른 동적 스타일 설정 */
   ${(props) =>
     props.isClicked &&
