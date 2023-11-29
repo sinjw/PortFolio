@@ -1,5 +1,5 @@
 import FirstPage from "./mainfirstpage/firstScreen";
-import Intro from "./introPage/intro";
+import Intro from "./introPage/introMain";
 import styled, { css } from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "./../store/config";

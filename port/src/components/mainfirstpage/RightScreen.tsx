@@ -10,17 +10,15 @@ const RightScreen = () => {
 
   const targetText = "PORTFOLIO";
   useEffect(() => {
-    setTimeout(() => {
-      let index = 0;
-      const typingInterval = setInterval(() => {
-        if (index <= targetText.length) {
-          setTypingText(targetText.slice(0, index));
-          index += 1;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 100);
-    }, 3500);
+    let index = 0;
+    const typingInterval = setInterval(() => {
+      if (index <= targetText.length) {
+        setTypingText(targetText.slice(0, index));
+        index += 1;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100);
   }, []);
 
   //버튼상태구독
