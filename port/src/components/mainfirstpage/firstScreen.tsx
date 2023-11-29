@@ -12,7 +12,6 @@ const FirstPage = () => {
   const isClicked = useSelector((state: RootState) => state.button.isClicked);
   const setClick = () => {
     dispatch(clickButton());
-    console.log(isClicked);
   };
 
   return (

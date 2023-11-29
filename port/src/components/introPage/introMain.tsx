@@ -19,9 +19,13 @@ const Intro = () => {
   );
 };
 export default Intro;
-const Navigate = styled.div``;
+const Navigate = styled.div`
+  text-align: center;
+  a {
+    text-decoration: none;
+    margin-left: 20px;
+  }
+`;
 const IntroConatiner = styled.div`
   width: 100%;
-  height: 1000px;
-  background: blue;
 `;
