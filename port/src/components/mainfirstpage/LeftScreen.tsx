@@ -71,7 +71,7 @@ const LeftScreenContainer = styled.div<{ isClicked: boolean }>`
   left: 0;
   text-align: center;
 
-  z-index: 1;
+  z-index: 3;
   ${(props) =>
     props.isClicked &&
     css`

@@ -84,7 +84,7 @@ const Navigate = styled.div`
   width: 100%;
   height: 60px;
   display: flex;
-  z-index: 100;
+  z-index: 1;
 
   justify-content: space-around;
   align-items: center;
