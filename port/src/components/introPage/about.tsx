@@ -7,7 +7,7 @@ import ProFileBackground from "../../assets/ProfileBackground.png";
 import ProFileBackground2 from "../../assets/ProfileBackground2.png";
 import axioslogo from "../../assets/axios.png";
 import csslogo from "../../assets/css.png";
-import echartlogo from "../../assets/echart.png";
+
 import figmalogo from "../../assets/figma.png";
 import githublogo from "../../assets/github.png";
 import htmllogo from "../../assets/html.png";
@@ -109,12 +109,9 @@ const About = () => {
               <LogoContainer>
                 <Logobox>
                   <SkillImage src={axioslogo} />
-                </Logobox>
-
-                <Logobox>
-                  <SkillImage src={echartlogo} />
                   <span>Axios</span>
                 </Logobox>
+
                 <Logobox>
                   <SkillImage src={figmalogo} />
                   <span>Figma</span>
@@ -149,6 +146,7 @@ const About = () => {
             </Skill3>
           </Skills>
         </SkillContainer>
+        <div>scroll</div>
         <Career />
       </AboutMeContainer>
     </>
@@ -159,7 +157,7 @@ export default About;
 const AboutMeContainer = styled.div<{ showContent: boolean }>`
   opacity: 0;
   transform: translateY(30px);
-  height: 800px;
+
   ${(props) =>
     props.showContent &&
     css`
@@ -173,6 +171,8 @@ const SectionTitle = styled.div`
   margin-top: 100px;
   font-size: 40px;
   margin-bottom: 40px;
+  font-family: "Black Han Sans", sans-serif;
+  color: #333;
 `;
 const ButtonContainer = styled.div`
   width: 100%;

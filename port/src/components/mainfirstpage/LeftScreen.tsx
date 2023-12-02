@@ -92,7 +92,7 @@ const Ptag1 = styled.p<{ loadTag: boolean }>`
   margin-top: 50px;
   font-size: 45px;
   font-family: "Noto Sans KR", sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   color: #333;
 
   &::before {
@@ -154,7 +154,8 @@ const Ptag3 = styled.p<{ loadTag3: boolean }>`
 const Span = styled.span<{ loadTag4: boolean }>`
   position: relative;
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 600;
+  color: #333;
   &::after {
     left: 0;
     top: 23px;
