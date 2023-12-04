@@ -9,7 +9,7 @@ const Career = () => {
   const [scrolling3, setScrolling3] = useState<boolean>(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.4,
   });
   useEffect(() => {
     if (inView) {
@@ -61,7 +61,7 @@ const Career = () => {
             <CardContentBottomText>
               <span>
                 웹디자인 과정 수료직후 학원에서 8개월간 근무하였고 CAFE24를통한
-                온라인 결제용 홈페이도 제작 하였습니다
+                온라인 결제용 홈페이지도 제작 하였습니다
               </span>
             </CardContentBottomText>
           </Card2>

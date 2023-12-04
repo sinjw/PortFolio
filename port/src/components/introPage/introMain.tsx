@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import About from "./about";
+import Project from "./project";
 import { useState } from "react";
 
 const Intro = () => {
@@ -52,6 +53,7 @@ const Intro = () => {
 
         <Routes>
           <Route path="/" element={<About />} />
+          <Route path="/project" element={<Project />} />
         </Routes>
       </Router>
     </IntroConatiner>

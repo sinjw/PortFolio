@@ -2,7 +2,7 @@ import ProFile from "../../assets/ProfileImage.png";
 import { useState, useEffect } from "react";
 import { styled, css, keyframes } from "styled-components";
 import { useSelector } from "react-redux";
-import { RootState } from "./../../store/config";
+import { RootState } from "../../store/config";
 const LeftScreen = () => {
   const isClicked = useSelector((state: RootState) => state.button.isClicked);
   const [loadTag, setLoadtag] = useState(false);

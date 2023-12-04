@@ -1,6 +1,6 @@
 import { styled, css } from "styled-components";
 import { useSelector } from "react-redux";
-import { RootState } from "./../../store/config";
+import { RootState } from "../../store/config";
 import { useEffect, useState } from "react";
 
 const RightScreen = () => {

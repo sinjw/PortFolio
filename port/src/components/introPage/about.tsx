@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/config";
+import { useInView } from "react-intersection-observer";
+
 import ProFile from "../../assets/ProfileImage.png";
 import ProFileBackground from "../../assets/ProfileBackground.png";
 import ProFileBackground2 from "../../assets/ProfileBackground2.png";
 import axioslogo from "../../assets/axios.png";
 import csslogo from "../../assets/css.png";
-
 import figmalogo from "../../assets/figma.png";
 import githublogo from "../../assets/github.png";
 import htmllogo from "../../assets/html.png";
@@ -24,6 +25,7 @@ const About = () => {
   const isClicked = useSelector((state: RootState) => state.button.isClicked);
   const [showContent, setShowcontent] = useState<boolean>(false);
   const [buttonClick, setButtonClick] = useState<boolean>(false);
+  const [scrolling, setScrolling] = useState<boolean>(false);
   useEffect(() => {
     setTimeout(() => {
       if (isClicked) {
@@ -35,14 +37,28 @@ const About = () => {
   const handleButtonClick = () => {
     setButtonClick(!buttonClick);
   };
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      console.log("하단 부분이 보입니다!");
+      setScrolling(true);
+    }
+  }, [inView]);
 
   return (
-    <>
+    <div>
       <AboutMeContainer showContent={showContent}>
         <SectionTitle>About Me</SectionTitle>
         <ButtonContainer>
           <ChangeButton buttonclick={buttonClick} onClick={handleButtonClick}>
-            <p>{buttonClick ? "Profile" : "Skill"}</p>
+            <div>
+              <p>Profile</p>
+              <p>Skill</p>
+            </div>
           </ChangeButton>
         </ButtonContainer>
 
@@ -146,14 +162,49 @@ const About = () => {
             </Skill3>
           </Skills>
         </SkillContainer>
-        <div>scroll</div>
+        <ScrollDown scrolling={scrolling}>
+          Scroll
+          <br /> &darr;
+        </ScrollDown>
+        <Observe ref={ref}></Observe>
         <Career />
       </AboutMeContainer>
-    </>
+    </div>
   );
 };
 
 export default About;
+const Observe = styled.div`
+  position: absolute;
+  bottom: 40%;
+  width: 100%;
+  height: 5px;
+  display: block;
+`;
+const Scrolls = keyframes`
+from {
+  transform:translateY(0px);
+
+}
+to{
+  transform:translateY(20px);
+  opacity:0;
+
+}
+
+`;
+const ScrollDown = styled.div<{ scrolling: boolean }>`
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.4;
+  animation: ${Scrolls} 2.2s ease infinite;
+
+  ${(props) =>
+    props.scrolling &&
+    css`
+      opacity: 0;
+    `}
+`;
 const AboutMeContainer = styled.div<{ showContent: boolean }>`
   opacity: 0;
   transform: translateY(30px);
@@ -176,41 +227,53 @@ const SectionTitle = styled.div`
 `;
 const ButtonContainer = styled.div`
   width: 100%;
+  height: 70px;
 `;
 const ChangeButton = styled.button<{ buttonclick: boolean }>`
-  width: 150px;
+  width: 250px;
   height: 60px;
-  border-radius: 50px 50px;
-  border: 1px solid#c3c3c3;
+  margin-top: 5px;
+  border-radius: 10px 10px;
+  border: none;
+
   position: relative;
-  margin-left: 45%;
+  margin-left: 43%;
   transform: translate(-50px -50px);
+  background-color: #dfdfdf;
+  cursor: pointer;
+
+  align-items: center;
+  & > div {
+    display: flex;
+    justify-content: space-around;
+  }
   p {
-    text-align: right;
     font-size: 20px;
-    margin-right: 20px;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-weight: 900;
+
+    color: #333;
+    z-index: 3;
   }
   &::after {
     content: "";
-    width: 50px;
+    width: 50%;
     height: 50px;
     display: block;
     position: absolute;
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0.9);
     top: 5px;
-    border-radius: 50% 50%;
+    border-radius: 10px 10px;
     transition: all 0.4s;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
   }
 
   ${(props) =>
     props.buttonclick &&
     css`
       &::after {
-        transform: translateX(85px);
+        transform: translateX(115px);
         transition: all 0.4s;
-      }
-      p {
-        text-align: left;
       }
     `}
 `;

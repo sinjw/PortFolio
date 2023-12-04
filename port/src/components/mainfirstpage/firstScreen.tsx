@@ -1,5 +1,5 @@
-import LeftScreen from "./LeftScreen";
-import RightScreen from "./RightScreen";
+import LeftScreen from "./leftScreen";
+import RightScreen from "./rightScreen";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clickButton } from "../reducer/buttonClick-reducer";
