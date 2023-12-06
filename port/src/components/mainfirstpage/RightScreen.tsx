@@ -48,6 +48,10 @@ const RightScreenContainer = styled.div<{ isClicked: boolean }>`
       transform: translateX(100%);
       transition: all 0.8s;
     `}
+  @media(max-width:500px) {
+    min-width: 100px;
+    width: 100%;
+  }
 `;
 const PtagContainer = styled.div`
   width: 100%;
@@ -72,6 +76,12 @@ const PtagTop = styled.p`
     width: 13px;
     height: 50px;
   }
+  @media (max-width: 500px) {
+    font-size: 25px;
+    &::after {
+      height: 35px;
+    }
+  }
 `;
 const PtagMiddle1 = styled.p`
   font-size: 70px;
@@ -80,6 +90,9 @@ const PtagMiddle1 = styled.p`
   font-weight: 900;
   margin-top: 15%;
   margin-left: 12%;
+  @media (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
 const PtagMiddle2 = styled.p`
   font-size: 70px;
@@ -88,4 +101,7 @@ const PtagMiddle2 = styled.p`
   font-weight: 900;
   margin-top: 15px;
   margin-left: 50%;
+  @media (max-width: 500px) {
+    font-size: 30px;
+  }
 `;

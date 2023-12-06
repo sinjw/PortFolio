@@ -91,6 +91,9 @@ const CareerContainer = styled.div`
   margin: 0 auto;
   margin-top: 200px;
   height: 800px;
+  @media (max-width: 500px) {
+    max-width: 500px;
+  }
 `;
 const ExperienceContainer = styled.div`
   position: relative;
@@ -109,6 +112,9 @@ const ExperienceContainer = styled.div`
       height: 25px;
     }
   }
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -117,15 +123,17 @@ const CardContainer = styled.div`
   height: 450px;
   margin: 0 auto;
   margin-top: 40px;
-
-  & > div {
-  }
 `;
 const CompanyLogo = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 15px 15px;
   margin-right: 5px;
+  @media (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
 `;
 const CompanyName = styled.div`
   display: flex;
@@ -135,6 +143,11 @@ const CompanyName = styled.div`
     font-family: "IBM Plex Sans KR", sans-serif;
     font-weight: 600;
     color: #444;
+  }
+  @media (max-width: 500px) {
+    span {
+      font-size: 16px;
+    }
   }
 `;
 const CardContent = styled.div`
@@ -181,6 +194,9 @@ const Card1 = styled.div<{ scrolling: boolean }>`
       transform: translateY(0px);
       opacity: 1;
     `}
+  @media (max-width: 500px) {
+    width: 30%;
+  }
 `;
 const Card2 = styled.div<{ scrolling2: boolean }>`
   background-color: white;
@@ -207,6 +223,9 @@ const Card2 = styled.div<{ scrolling2: boolean }>`
       transform: translateY(0px);
       opacity: 1;
     `}
+  @media (max-width: 500px) {
+    width: 30%;
+  }
 `;
 const Card3 = styled.div<{ scrolling3: boolean }>`
   background-color: white;
@@ -233,4 +252,7 @@ const Card3 = styled.div<{ scrolling3: boolean }>`
       transform: translateY(0px);
       opacity: 1;
     `}
+  @media (max-width: 500px) {
+    width: 30%;
+  }
 `;

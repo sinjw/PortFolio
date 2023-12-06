@@ -2,32 +2,48 @@ import styled, { css } from "styled-components";
 
 interface ModalProps {
   Title: string;
-  content: React.ReactNode;
-  isOpen: boolean;
+  contentStock: React.ReactNode;
+  isOpenStock: boolean;
   modalanimation: boolean;
   onClose: () => void;
 }
 
 const Modal: React.FC<ModalProps> = ({
   Title,
-  isOpen,
+  isOpenStock,
   modalanimation,
   onClose,
+  contentStock,
 }) => {
   return (
     <>
-      <ModalBackground isOpen={isOpen} onClick={onClose}></ModalBackground>
-      <ModalContainer isOpen={isOpen}>
+      <ModalBackground isOpen={isOpenStock} onClick={onClose}></ModalBackground>
+      <ModalContainer isOpen={isOpenStock}>
         <ModalTitleStockHolm>{Title}</ModalTitleStockHolm>
         <ModalClose onClick={onClose}> </ModalClose>
-        <ModalStockHomle modalanimation={modalanimation}></ModalStockHomle>
+
+        <ModalStockHomle isOpen={isOpenStock} modalanimation={modalanimation}>
+          <ModalImage isOpen={isOpenStock}>{contentStock} </ModalImage>
+        </ModalStockHomle>
       </ModalContainer>
     </>
   );
 };
 
 export default Modal;
+const ModalImage = styled.div<{ isOpen: boolean }>`
+  position: absolute;
 
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  ${(props) =>
+    props.isOpen &&
+    `
+  display:block;
+  `}
+`;
 const ModalBackground = styled.div<{ isOpen: boolean }>`
   position: absolute;
   top: 0;
@@ -65,20 +81,24 @@ const ModalTitleStockHolm = styled.div`
 
   font-size: 40px;
 `;
-const ModalStockHomle = styled.div<{ modalanimation: boolean }>`
-  width: 800px;
-  height: 500px;
+const ModalStockHomle = styled.div<{
+  modalanimation: boolean;
+  isOpen: boolean;
+}>`
+  width: 70%;
+  height: 74%;
   background-color: white;
   position: absolute;
-  left: 30%;
+  left: 15%;
   transform: translateY(10px);
-
-  top: 24%;
+  top: 10%;
   opacity: 0;
 
   transition: all 0.4s;
+
   ${(props) =>
     props.modalanimation &&
+    props.isOpen &&
     css`
       transform: translate(0);
       transition: all 0.4s;

@@ -26,7 +26,11 @@ const FirstPage = () => {
 };
 
 export default FirstPage;
-const FirstScreenContainer = styled.div``;
+const FirstScreenContainer = styled.div`
+  @media (max-width: 500px) {
+    max-width: 500px;
+  }
+`;
 const buttonAnimation = keyframes`
   from {
    width:30px;
@@ -89,4 +93,9 @@ const MainButtonStyle = styled.button<{ isClicked: boolean }>`
       display: none;
       /* 다른 원하는 스타일 설정 추가 가능 */
     `}
+
+  @media(max-width:500px) {
+    left: 45%;
+    top: 60%;
+  }
 `;

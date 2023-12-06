@@ -26,6 +26,10 @@ const About = () => {
   const [showContent, setShowcontent] = useState<boolean>(false);
   const [buttonClick, setButtonClick] = useState<boolean>(false);
   const [scrolling, setScrolling] = useState<boolean>(false);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 1,
+  });
   useEffect(() => {
     setTimeout(() => {
       if (isClicked) {
@@ -37,10 +41,6 @@ const About = () => {
   const handleButtonClick = () => {
     setButtonClick(!buttonClick);
   };
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 1,
-  });
 
   useEffect(() => {
     if (inView) {
@@ -214,8 +214,11 @@ const AboutMeContainer = styled.div<{ showContent: boolean }>`
     css`
       opacity: 1;
       transform: translateY(0px);
-      transition: all 1.2s;
+      transition: all 1s;
     `};
+  @media (max-width: 500px) {
+    max-width: 500px;
+  }
 `;
 const SectionTitle = styled.div`
   text-align: center;
@@ -228,6 +231,9 @@ const SectionTitle = styled.div`
 const ButtonContainer = styled.div`
   width: 100%;
   height: 70px;
+  @media (max-width: 500px) {
+    max-width: 500px;
+  }
 `;
 const ChangeButton = styled.button<{ buttonclick: boolean }>`
   width: 250px;
@@ -267,6 +273,10 @@ const ChangeButton = styled.button<{ buttonclick: boolean }>`
     transition: all 0.4s;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
   }
+  @media (max-width: 500px) {
+    max-width: 500px;
+    left: -17%;
+  }
 
   ${(props) =>
     props.buttonclick &&
@@ -293,7 +303,7 @@ to {
 const ProfileContainer = styled.div`
   &.activeProfile {
     width: 90%;
-    height: 430px;
+    height: 440px;
     margin: 0 auto;
     margin-top: 60px;
     display: flex;
@@ -357,6 +367,11 @@ const Skills = styled.div`
     font-size: 20px;
     font-family: "IBM Plex Sans KR", sans-serif;
   }
+  @media (max-width: 500px) {
+    p {
+      font-size: 13px;
+    }
+  }
 `;
 const LogoContainer = styled.div`
   display: flex;
@@ -381,11 +396,18 @@ const Logobox = styled.div`
     font-size: 20px;
     margin-left: 8px;
   }
+  @media (max-width: 500px) {
+    font-size: 11px;
+  }
 `;
 const SkillImage = styled.img`
   width: 25px;
   height: 25px;
   margin-left: 15px;
+  @media (max-width: 500px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 const Skill1 = styled.div`
   height: 320px;
@@ -430,6 +452,11 @@ const Skill3 = styled.div`
 const ProfileContent = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    margin-top: 100px;
+    margin-left: -30px;
+  }
 `;
 const ProfileTag = styled.p`
   border: 1px solid#333;
@@ -442,20 +469,37 @@ const ProfileTag = styled.p`
 const ProfileName = styled.p`
   font-size: 32px;
   font-family: "IBM Plex Sans KR", sans-serif;
+  @media (max-width: 500px) {
+    max-width: 500px;
+    font-size: 20px;
+  }
 `;
 const Profilebirth = styled.p`
   font-size: 22px;
   font-family: "IBM Plex Sans KR", sans-serif;
+  @media (max-width: 500px) {
+    max-width: 500px;
+    font-size: 15px;
+  }
 `;
 const ProFileImg = styled.img`
   width: 160px;
   height: 160px;
   filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.6));
+  @media (max-width: 500px) {
+    max-width: 500px;
+
+    width: 70px;
+    height: 70px;
+  }
 `;
 const ProFileText = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  @media (max-width: 500px) {
+    margin-left: 0;
+  }
 `;
 
 const AboutText = styled.div`
@@ -480,6 +524,12 @@ const AboutText = styled.div`
       width: 100%;
 
       border-bottom: 2px solid#333;
+    }
+    @media (max-width: 500px) {
+      max-width: 300px;
+      font-size: 15px;
+      line-height: 23px;
+      margin-top: 40px;
     }
   }
 `;

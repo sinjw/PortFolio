@@ -78,6 +78,10 @@ const LeftScreenContainer = styled.div<{ isClicked: boolean }>`
       transform: translateX(-100%);
       transition: all 0.8s;
     `}
+
+  @media(max-width:500px) {
+    display: none;
+  }
 `;
 const ProFileImg = styled.img`
   width: 170px;

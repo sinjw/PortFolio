@@ -61,6 +61,9 @@ const Intro = () => {
 };
 const IntroConatiner = styled.div`
   width: 100%;
+  @media (max-width: 500px) {
+    max-width: 500px;
+  }
 `;
 
 const Navigate = styled.div`
