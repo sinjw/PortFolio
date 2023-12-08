@@ -121,7 +121,7 @@ const About = () => {
               </LogoContainer>
             </Skill1>
             <Skill2>
-              <Skill1Ptag>어느정도 다룰 줄 알아요</Skill1Ptag>
+              <Skill1Ptag>조금은 다룰 줄 알아요</Skill1Ptag>
               <LogoContainer>
                 <Logobox>
                   <SkillImage src={axioslogo} />
@@ -150,13 +150,13 @@ const About = () => {
               </LogoContainer>
             </Skill2>
             <Skill3>
-              <Skill1Ptag>사용해 본적있어요</Skill1Ptag>
+              <Skill1Ptag>한번쯤 사용해 봤어요</Skill1Ptag>
               <LogoContainer>
                 <Logobox>
-                  <SkillImage src={pythonlogo} /> <span>Python</span>{" "}
+                  <SkillImage src={pythonlogo} /> <span>Python</span>
                 </Logobox>
                 <Logobox>
-                  <SkillImage src={reactlogo} /> <span>ReactNative</span>{" "}
+                  <SkillImage src={reactlogo} /> <span>ReactNative</span>
                 </Logobox>
               </LogoContainer>
             </Skill3>

@@ -1,6 +1,6 @@
 import LeftScreen from "./leftScreen";
 import RightScreen from "./rightScreen";
-
+import "boxicons";
 import { useDispatch, useSelector } from "react-redux";
 import { clickButton } from "../reducer/buttonClick-reducer";
 import { RootState } from "../../store/config";
@@ -19,7 +19,8 @@ const FirstPage = () => {
       <RightScreen></RightScreen>
       <LeftScreen></LeftScreen>
       <MainButtonStyle onClick={setClick} isClicked={isClicked}>
-        Open
+        <OpenIcon className="bx bxs-door-open"></OpenIcon>
+        <p>OPEN</p>
       </MainButtonStyle>
     </FirstScreenContainer>
   );
@@ -30,6 +31,10 @@ const FirstScreenContainer = styled.div`
   @media (max-width: 500px) {
     max-width: 500px;
   }
+`;
+const OpenIcon = styled.i`
+  font-size: 43px;
+  margin-bottom: -5px;
 `;
 const buttonAnimation = keyframes`
   from {

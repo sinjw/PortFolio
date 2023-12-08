@@ -17,13 +17,13 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   return (
     <>
-      <ModalBackground isOpen={isOpenStock} onClick={onClose}></ModalBackground>
-      <ModalContainer isOpen={isOpenStock}>
+      <ModalBackground isopen={isOpenStock} onClick={onClose}></ModalBackground>
+      <ModalContainer isopen={isOpenStock}>
         <ModalTitleStockHolm>{Title}</ModalTitleStockHolm>
         <ModalClose onClick={onClose}> </ModalClose>
 
-        <ModalStockHomle isOpen={isOpenStock} modalanimation={modalanimation}>
-          <ModalImage isOpen={isOpenStock}>{contentStock} </ModalImage>
+        <ModalStockHomle isopen={isOpenStock} modalanimation={modalanimation}>
+          <ModalImage isopen={isOpenStock}>{contentStock} </ModalImage>
         </ModalStockHomle>
       </ModalContainer>
     </>
@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
 };
 
 export default Modal;
-const ModalImage = styled.div<{ isOpen: boolean }>`
+const ModalImage = styled.div<{ isopen: boolean }>`
   position: absolute;
 
   width: 100%;
@@ -39,12 +39,12 @@ const ModalImage = styled.div<{ isOpen: boolean }>`
   display: none;
 
   ${(props) =>
-    props.isOpen &&
+    props.isopen &&
     `
   display:block;
   `}
 `;
-const ModalBackground = styled.div<{ isOpen: boolean }>`
+const ModalBackground = styled.div<{ isopen: boolean }>`
   position: absolute;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -55,7 +55,7 @@ const ModalBackground = styled.div<{ isOpen: boolean }>`
   transition: all 0.4s;
 
   ${(props) =>
-    props.isOpen
+    props.isopen
       ? css`
           display: block;
           transform: translateY(0);
@@ -64,11 +64,11 @@ const ModalBackground = styled.div<{ isOpen: boolean }>`
         `
       : `display:none`}
 `;
-const ModalContainer = styled.div<{ isOpen: boolean }>`
+const ModalContainer = styled.div<{ isopen: boolean }>`
   display: none;
 
   ${(props) =>
-    props.isOpen &&
+    props.isopen &&
     `
 
 display:block;`}
@@ -83,7 +83,7 @@ const ModalTitleStockHolm = styled.div`
 `;
 const ModalStockHomle = styled.div<{
   modalanimation: boolean;
-  isOpen: boolean;
+  isopen: boolean;
 }>`
   width: 70%;
   height: 74%;
@@ -98,7 +98,7 @@ const ModalStockHomle = styled.div<{
 
   ${(props) =>
     props.modalanimation &&
-    props.isOpen &&
+    props.isopen &&
     css`
       transform: translate(0);
       transition: all 0.4s;
