@@ -14,7 +14,9 @@ const Project = () => {
   const [toggles2, setToggles2] = useState<boolean>(false);
   const [toggles3, setToggles3] = useState<boolean>(false);
   const [toggles4, setToggles4] = useState<boolean>(false);
+  const imageData = StockHolmIamges;
 
+  const PortImageData = PortFolioIamges;
   useEffect(() => {
     setProjectAnimation(true);
   }, []);
@@ -117,10 +119,12 @@ const Project = () => {
         <PorjectTextContainer>
           <ProjectIntro>
             <h3>프로젝트 소개</h3>
+            <p>StockHolm은</p>
             <p>
-              StockHolm은 스웨덴의 수도의 이름을 이용해서 모의 주식 사이트를
-              주식(Stock) + 섬(Holm)이라는 의미를 가지도록 표현한 이름입니다
+              스웨덴의 수도의 이름을 이용해서 모의 주식 사이트를 주식(Stock) +
+              섬(Holm)이라는 의미를 가지도록 표현한 이름입니다
             </p>
+
             <p>
               모의 주식 투자를 목적으로 만들어진 사이트이며 주식시장의 Open
               API를 활용해서 주식정보를 받아와 차트로 그려내었습니다
@@ -140,9 +144,10 @@ const Project = () => {
             </p>
             <p>
               제가 맡아서 작업했던 부분은 오른쪽파트의 탭기능을 활용한
-              기능구현파트를 맡았습니다 작업을 진행하면서 프로젝트 시작전에
-              미숙했던 서버와의 통신부분에 대해서 조금더 이해도를 갖게
-              되었습니다.
+              기능구현을 맡았습니다 게시판기능을 진행할때 AXIOS를이용해 서버와의
+              CRUD 기능을만들면서 게시글 삭제부분에서의 오류가 있었는데 그부분을
+              구글링을 통해 해결해나가면서 서버와의 통신개념에 대한 이해도를
+              조금 높힐 수 있었습니다.
             </p>
             <p>
               아쉬웠던 점은 디자인 적인 부분과 처음생각했던 기능들을 전부
@@ -155,7 +160,7 @@ const Project = () => {
         <LeftContentWrapper>
           <PortFolio>
             <PortFolioModal>
-              <StockHolmLogoImg src={StockHolmLogo} />
+              <p>PortFolio</p>
               <WebIMG src={PortFolioIamges} />
               <ModalOpenButton onClick={handleModalPortClick}>
                 Open
@@ -218,56 +223,66 @@ const Project = () => {
           <ProjectIntro>
             <h3>프로젝트 소개</h3>
             <p>
-              저만의 개인 포트폴리오를 한번쯤 제작하고 싶어서 만들게 되었습니다
+              앞으로도 꾸준히 배워서 개발역량이 커지는 만큼 저와함께 성장 할 수
+              있는 포트폴리오를 만들고 싶어서 만들게 되었습니다
             </p>
-            <p>코드를 중간중간 저장하기위한용도로 git hub을 사용 하였습니다</p>
-            <p>라우터를 이용해서 3개의 페이지로 구성하였습니다.</p>
+            <p>
+              코드를 중간중간 저장하고 조금이라도 사용에 더 익숙해지기위해서 git
+              hub을 사용 하였고 3개의 페이지로 구성하였습니다.
+            </p>
+            <p></p>
           </ProjectIntro>
           <ProJectReview>
             <h3>프로젝트 후기</h3>
 
+            <p></p>
             <p>
-              처음 계획 했던것들에 비해서 모든 기능들을 구현하기에는 시간이
-              부족했고 이로인해서 개발 기간을 조금 더 보수적으로 잡아야 좋다는
-              것을 깨닫게 되었습니다
+              부트캠프기간 배웠던부분을 복습하면서 여러가지 기능을 시도해보려고
+              했습니다 생각했던 기능들을 만들면서 해나가기엔 디자인적인 감각이
+              아직은 부족해서 그부분을 고려하는데 생각보다 시간이 많이 들게되어
+              앞으로 개발역량을 키워가면서 같이 성장하는 포트폴리오를
+              만들어야겠다고 생각했습니다
             </p>
             <p>
-              제가 맡아서 작업했던 부분은 오른쪽파트의 탭기능을 활용한
-              기능구현파트를 맡았습니다 작업을 진행하면서 프로젝트 시작전에
-              미숙했던 서버와의 통신부분에 대해서 조금더 이해도를 갖게
-              되었습니다.
-            </p>
-            <p>
-              아쉬웠던 점은 디자인 적인 부분과 처음생각했던 기능들을 전부
-              구현해내지 못한게 아쉬웠습니다.
+              포트폴리오를 제작하면서 부트캠프기간에는 기회가없어서 배포를
+              해보지 못했었는데 AWS를 통해 프론트엔드 배포 과정을 복습 해 볼 수
+              있었습니다
             </p>
           </ProJectReview>
         </PorjectTextContainer>
       </PortFolioContainer>
       <Modal
         Title="StockHolm"
-        contentStock={
-          <div>
-            <iframe
-              style={{ width: "100%", height: "760px" }}
-              src="http://seb008stockholm.s3-website.ap-northeast-2.amazonaws.com/"
-            />
-          </div>
-        }
+        contentImg={imageData}
         isOpenStock={ModalStock}
         onClose={handleModalStockClick}
         modalanimation={ModalAnimation}
+        contents={
+          <ModalSkillName>
+            <p> React</p>
+            <p> Redux/toolkit </p>
+            <p>React-query </p>
+            <p> TypeScript</p>
+            <p> Javascript </p>
+            <p> Axios</p>
+            <p> Chartjs</p>
+          </ModalSkillName>
+        }
       />
       <Modal
         Title="PortFolio"
-        contentStock={
-          <div>
-            <iframe style={{ width: "100%", height: "760px" }} src="" />
-          </div>
-        }
+        contentImg={PortImageData}
         isOpenStock={ModalPort}
         onClose={handleModalPortClick}
         modalanimation={ModalAnimation}
+        contents={
+          <ModalSkillName>
+            <p> React</p>
+            <p> Redux/toolkit </p>
+            <p> TypeScript</p>
+            <p> Javascript </p>
+          </ModalSkillName>
+        }
       />
     </ProjectContainer>
   );
@@ -279,7 +294,7 @@ const ProjectContainer = styled.div<{ ProjectAnimation: boolean }>`
   margin: 0 auto;
   margin-top: 60px;
   width: 100%;
-
+  position: relative;
   opacity: 0;
   height: 100%;
   transform: translateY(20px);
@@ -325,15 +340,57 @@ const PorjectTextContainer = styled.div`
 
 const ProjectIntro = styled.div`
   width: 100%;
-  margin-bottom: 10%;
+  margin-bottom: 4%;
+  width: 60%;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 20px;
+  margin-left: 4%;
+
   h3 {
-    font-size: 20px;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    position: relative;
+    &::after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      height: 3px;
+      border-bottom: 13px solid#008000;
+      opacity: 0.5;
+      display: block;
+    }
   }
 `;
 const ProJectReview = styled.div`
   width: 100%;
+  margin-left: 4%;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 20px;
+  width: 60%;
+
   h3 {
-    font-size: 20px;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: 30px;
+    position: relative;
+
+    color: #333;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+
+      height: 3px;
+      opacity: 0.5;
+      border-bottom: 13px solid#008000;
+      display: block;
+    }
   }
 `;
 const LeftText = styled.div`
@@ -366,6 +423,12 @@ const PortFolioContainer = styled.div`
 const PortFolioModal = styled.div`
   cursor: pointer;
   width: 100%;
+  p {
+    color: #333;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: "IBM Plex Sans KR", sans-serif;
+  }
 
   &:hover {
     & > div {
@@ -378,6 +441,7 @@ const PortFolioModal = styled.div`
 `;
 const LeftContentWrapper = styled.div`
   width: 40%;
+  margin-left: 5%;
 `;
 const StockHolm = styled.div`
   background-color: #fff;
@@ -429,6 +493,36 @@ const ModalOpenButton = styled.div`
     transition: all 0.4s;
     background-color: #fafad2;
     cursor: pointer;
+  }
+`;
+const ModalSkillName = styled.div`
+  display: flex;
+  p {
+    padding: 0px 5px 0px 5px;
+    margin-left: 4px;
+
+    border-radius: 20px 20px;
+    &:nth-child(1) {
+      background-color: skyblue;
+    }
+    &:nth-child(2) {
+      background-color: #ffe4c4;
+    }
+    &:nth-child(3) {
+      background-color: #fafad2;
+    }
+    &:nth-child(4) {
+      background-color: #e6e6fa;
+    }
+    &:nth-child(5) {
+      background-color: #d8bfd8;
+    }
+    &:nth-child(6) {
+      background-color: #fff8dc;
+    }
+    &:nth-child(7) {
+      background-color: #ffe4e1;
+    }
   }
 `;
 

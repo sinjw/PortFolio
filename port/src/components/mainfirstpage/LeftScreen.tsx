@@ -17,10 +17,10 @@ const LeftScreen = () => {
     }, 1000);
     setTimeout(() => {
       setLoadtag3(true);
-    }, 2000);
+    }, 1500);
     setTimeout(() => {
       setLoadtag4(true);
-    }, 3000);
+    }, 2000);
   }, []);
 
   //버튼상태구독

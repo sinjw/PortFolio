@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 
 interface ModalProps {
   Title: string;
-  contentStock: React.ReactNode;
+  contentImg: string;
   isOpenStock: boolean;
   modalanimation: boolean;
   onClose: () => void;
+  contents: JSX.Element;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -13,7 +14,8 @@ const Modal: React.FC<ModalProps> = ({
   isOpenStock,
   modalanimation,
   onClose,
-  contentStock,
+  contentImg,
+  contents,
 }) => {
   return (
     <>
@@ -23,7 +25,20 @@ const Modal: React.FC<ModalProps> = ({
         <ModalClose onClick={onClose}> </ModalClose>
 
         <ModalStockHomle isopen={isOpenStock} modalanimation={modalanimation}>
-          <ModalImage isopen={isOpenStock}>{contentStock} </ModalImage>
+          <ModalImage isopen={isOpenStock}>
+            <a
+              target="_blank"
+              href="http://seb008stockholm.s3-website.ap-northeast-2.amazonaws.com/"
+            >
+              <img src={contentImg} />
+            </a>
+          </ModalImage>
+          <ModalSkillContainer>
+            <div>
+              <p>사용된 기술</p>
+            </div>
+            <div>{contents}</div>
+          </ModalSkillContainer>
         </ModalStockHomle>
       </ModalContainer>
     </>
@@ -31,19 +46,7 @@ const Modal: React.FC<ModalProps> = ({
 };
 
 export default Modal;
-const ModalImage = styled.div<{ isopen: boolean }>`
-  position: absolute;
 
-  width: 100%;
-  height: 100%;
-  display: none;
-
-  ${(props) =>
-    props.isopen &&
-    `
-  display:block;
-  `}
-`;
 const ModalBackground = styled.div<{ isopen: boolean }>`
   position: absolute;
   top: 0;
@@ -73,6 +76,7 @@ const ModalContainer = styled.div<{ isopen: boolean }>`
 
 display:block;`}
 `;
+
 const ModalTitleStockHolm = styled.div`
   color: white;
   position: absolute;
@@ -85,13 +89,13 @@ const ModalStockHomle = styled.div<{
   modalanimation: boolean;
   isopen: boolean;
 }>`
-  width: 70%;
-  height: 74%;
+  width: 50%;
+  height: 630px;
   background-color: white;
-  position: absolute;
-  left: 15%;
+  position: fixed;
+  left: 25%;
   transform: translateY(10px);
-  top: 10%;
+  top: 6%;
   opacity: 0;
 
   transition: all 0.4s;
@@ -105,7 +109,38 @@ const ModalStockHomle = styled.div<{
       opacity: 1;
     `}
 `;
+const ModalSkillContainer = styled.div`
+  position: absolute;
+  display: flex;
+  color: black;
+  flex-direction: column;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  bottom: 5%;
+`;
 
+const ModalImage = styled.div<{ isopen: boolean }>`
+  position: absolute;
+  overflow: hidden;
+  display: none;
+  a {
+  }
+  img {
+    width: 100%;
+    transition: all.4s;
+    over-fit: contain;
+    overflow: hidden;
+    &:hover {
+      transform: scale(1.1, 1.1);
+      overflow: hidden;
+    }
+  }
+
+  ${(props) =>
+    props.isopen &&
+    `
+  display:block;
+  `}
+`;
 const ModalClose = styled.div`
   width: 100px;
   cursor: pointer;
