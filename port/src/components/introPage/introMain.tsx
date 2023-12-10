@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import About from "./about";
 import Project from "./project";
+
 import { useState } from "react";
 
 const Intro = () => {
@@ -15,39 +16,31 @@ const Intro = () => {
     <IntroConatiner>
       <Router>
         <Navigate>
-          <StyledLink
-            to="/"
-            className={`tab ${activeTab === 1 ? "active-tab" : "inactive-tab"}`}
-            onClick={() => {
-              handleTabStyle(1);
-            }}
-          >
-            <p>Front-end Developer</p>
-          </StyledLink>
-          <StyledLinkContainer
-            className={`tab ${activeTab === 1 ? "active-tab" : "inactive-tab"}`}
-            onClick={() => {
-              handleTabStyle(1);
-            }}
-          >
-            <StyledLink to="/">About</StyledLink>
-          </StyledLinkContainer>
+          <div>Front-end</div>
+          <StyledLinkContainer>
+            <StyledLink
+              to="/"
+              onClick={() => {
+                handleTabStyle(1);
+              }}
+              className={`tab ${
+                activeTab === 1 ? "active-tab" : "inactive-tab"
+              }`}
+            >
+              <p>About</p>
+            </StyledLink>
 
-          <StyledLinkContainer
-            className={`tab ${activeTab === 3 ? "active-tab" : "inactive-tab"}`}
-            onClick={() => {
-              handleTabStyle(3);
-            }}
-          >
-            <StyledLink to="/project">Project</StyledLink>
-          </StyledLinkContainer>
-          <StyledLinkContainer
-            className={`tab ${activeTab === 4 ? "active-tab" : "inactive-tab"}`}
-            onClick={() => {
-              handleTabStyle(4);
-            }}
-          >
-            <StyledLink to="/contact">Contact</StyledLink>
+            <StyledLink
+              onClick={() => {
+                handleTabStyle(3);
+              }}
+              className={`tab ${
+                activeTab === 3 ? "active-tab" : "inactive-tab"
+              }`}
+              to="/project"
+            >
+              <p>ProJect</p>
+            </StyledLink>
           </StyledLinkContainer>
         </Navigate>
 
@@ -59,6 +52,7 @@ const Intro = () => {
     </IntroConatiner>
   );
 };
+
 const IntroConatiner = styled.div`
   width: 100%;
   @media (max-width: 500px) {
@@ -67,7 +61,7 @@ const IntroConatiner = styled.div`
 `;
 
 const Navigate = styled.div`
-  background-color: #333;
+  background-color: #f3f3f3;
   position: fixed;
   width: 100%;
   height: 60px;
@@ -76,38 +70,38 @@ const Navigate = styled.div`
 
   justify-content: space-around;
   align-items: center;
+
+  & > div {
+    font-size: 20px;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-weight: 900;
+  }
 `;
-
+// const TabStyle = styled.div``;
 const StyledLinkContainer = styled.div`
+  height: 100%;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: -10px;
   position: relative;
-  &.active-tab {
-    &::after {
-      content: "";
-      width: 100%;
-      border-bottom: 3px solid#fff;
-      height: 3px;
-      display: block;
-
-      transition: all.3s;
-    }
-  }
-  &.inactive-tab {
-    &::after {
-      content: "";
-      width: 0%;
-      border-bottom: 3px solid#fff;
-      height: 3px;
-      display: block;
-
-      transition: all.3s;
-    }
-  }
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 900;
 `;
 
 const StyledLink = styled(Link)`
-  color: white;
   text-decoration: none;
   font-size: 20px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+
+  &.active-tab {
+    color: black;
+  }
+  &.inactive-tab {
+    color: #999;
+  }
 `;
 
 export default Intro;

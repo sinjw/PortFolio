@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import Modal from "./modal";
+import Modal from "../modal/modal";
 import StockHolmLogo from "../../assets/stockholmLogo.png";
 import ToggleImg from "../../assets/toggle.png";
 import StockHolmIamges from "../../assets/stockholm.png";
@@ -130,8 +130,9 @@ const Project = () => {
               API를 활용해서 주식정보를 받아와 차트로 그려내었습니다
             </p>
             <p>
-              또한 단일 페이지로 이루어져있고 한페이지 안에서 여러가지 기능들을
-              수행 할 수 있도록 만들었습니다 .
+              또한 단일 페이지로 이루어져있고 OAuth2.0을통해 구글로그인 기능과
+              이메일인증 기능을 구현 하였습니다 그리고 이 사이트는 한페이지
+              안에서 여러가지 기능들을 수행 할 수 있도록 만들었습니다 .
             </p>
           </ProjectIntro>
           <ProJectReview>
@@ -161,7 +162,7 @@ const Project = () => {
           <PortFolio>
             <PortFolioModal>
               <p>PortFolio</p>
-              <WebIMG src={PortFolioIamges} />
+              <WebIMG src={PortFolioIamges} onClick={handleModalPortClick} />
               <ModalOpenButton onClick={handleModalPortClick}>
                 Open
               </ModalOpenButton>
@@ -189,7 +190,7 @@ const Project = () => {
             <LeftTextPtag>
               <ToggleContentContainer>
                 <ToggleContent3
-                  href="http://joogwonportfolio.s3-website.ap-northeast-2.amazonaws.com"
+                  href="http://sinjoongwonportfolio.s3-website.ap-northeast-2.amazonaws.com/project"
                   target="blank"
                   toggles={toggles3}
                 >
@@ -343,7 +344,7 @@ const ProjectIntro = styled.div`
   margin-bottom: 4%;
   width: 60%;
   font-family: "IBM Plex Sans KR", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 4%;
 
   h3 {
@@ -369,7 +370,7 @@ const ProJectReview = styled.div`
   width: 100%;
   margin-left: 4%;
   font-family: "IBM Plex Sans KR", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   width: 60%;
 
   h3 {

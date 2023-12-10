@@ -80,7 +80,7 @@ display:block;`}
 const ModalTitleStockHolm = styled.div`
   color: white;
   position: absolute;
-  top: 15%;
+  top: 7%;
   left: 46%;
 
   font-size: 40px;
@@ -95,7 +95,7 @@ const ModalStockHomle = styled.div<{
   position: fixed;
   left: 25%;
   transform: translateY(10px);
-  top: 6%;
+  top: 16%;
   opacity: 0;
 
   transition: all 0.4s;
