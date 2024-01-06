@@ -50,7 +50,7 @@ const About = () => {
   }, [inView]);
 
   return (
-    <div>
+    <AboutWrapper>
       <AboutMeContainer showContent={showContent}>
         <SectionTitle>About Me</SectionTitle>
         <ButtonContainer>
@@ -169,7 +169,7 @@ const About = () => {
         <Observe ref={ref}></Observe>
         <Career />
       </AboutMeContainer>
-    </div>
+    </AboutWrapper>
   );
 };
 
@@ -204,6 +204,11 @@ const ScrollDown = styled.div<{ scrolling: boolean }>`
     css`
       opacity: 0;
     `}
+`;
+const AboutWrapper = styled.div`
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const AboutMeContainer = styled.div<{ showContent: boolean }>`
   opacity: 0;
