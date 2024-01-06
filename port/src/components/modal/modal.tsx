@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({
       <ModalBackground isopen={isOpenStock} onClick={onClose}></ModalBackground>
       <ModalContainer isopen={isOpenStock}>
         <ModalTitleStockHolm>{Title}</ModalTitleStockHolm>
-        <ModalClose onClick={onClose}> </ModalClose>
+        <ModalClose onClick={onClose}> Close</ModalClose>
 
         <ModalStockHomle isopen={isOpenStock} modalanimation={modalanimation}>
           <ModalImage isopen={isOpenStock}>
@@ -90,7 +90,7 @@ const ModalStockHomle = styled.div<{
   isopen: boolean;
 }>`
   width: 50%;
-  height: 630px;
+  height: 670px;
   background-color: white;
   position: fixed;
   left: 25%;
@@ -111,6 +111,7 @@ const ModalStockHomle = styled.div<{
 `;
 const ModalSkillContainer = styled.div`
   position: absolute;
+
   display: flex;
   color: black;
   flex-direction: column;
@@ -142,11 +143,14 @@ const ModalImage = styled.div<{ isopen: boolean }>`
   `}
 `;
 const ModalClose = styled.div`
-  width: 100px;
+  width: 60px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  height: 100px;
-  background-color: black;
+  height: 30px;
+  background-color: #333;
   position: absolute;
-  top: 10%;
-  right: 10%;
+  top: 13%;
+  right: 25%;
 `;

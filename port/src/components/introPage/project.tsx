@@ -51,16 +51,28 @@ const Project = () => {
     <ProjectContainer ProjectAnimation={ProjectAnimation}>
       <StockHolmContainer>
         <LeftContentWrapper>
-          <StockHolm>
-            <StockHolmModal onClick={handleModalStockClick}>
-              <StockHolmLogoImg src={StockHolmLogo} />
-              <WebIMG src={StockHolmIamges} />
+          <div style={{ display: "flex", width: "100%" }}>
+            <StockHolm>
+              <StockHolmModal onClick={handleModalStockClick}>
+                <StockHolmLogoImg src={StockHolmLogo} />
+                <WebIMG src={StockHolmIamges} />
 
-              <ModalOpenButton onClick={handleModalStockClick}>
-                자세히보기
-              </ModalOpenButton>
-            </StockHolmModal>
-          </StockHolm>
+                <ModalOpenButton onClick={handleModalStockClick}>
+                  자세히보기
+                </ModalOpenButton>
+              </StockHolmModal>
+            </StockHolm>
+            <PortFolio>
+              <PortFolioModal>
+                <p>PortFolio</p>
+                <WebIMG src={PortFolioIamges} onClick={handleModalPortClick} />
+                <ModalOpenButton onClick={handleModalPortClick}>
+                  Open
+                </ModalOpenButton>
+              </PortFolioModal>
+            </PortFolio>
+          </div>
+
           <LeftText>
             <LeftTextPtag>
               <span>StockHolm</span>
@@ -159,16 +171,6 @@ const Project = () => {
       </StockHolmContainer>
       <PortFolioContainer>
         <LeftContentWrapper>
-          <PortFolio>
-            <PortFolioModal>
-              <p>PortFolio</p>
-              <WebIMG src={PortFolioIamges} onClick={handleModalPortClick} />
-              <ModalOpenButton onClick={handleModalPortClick}>
-                Open
-              </ModalOpenButton>
-            </PortFolioModal>
-          </PortFolio>
-
           <LeftText>
             <LeftTextPtag>
               <span>PortFolio</span>
@@ -315,7 +317,7 @@ const StockHolmContainer = styled.div`
   margin: 0 auto;
   margin-top: 80px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 const StockHolmLogoImg = styled.img`
   width: 65%;
@@ -441,8 +443,7 @@ const PortFolioModal = styled.div`
   }
 `;
 const LeftContentWrapper = styled.div`
-  width: 40%;
-  margin-left: 5%;
+  margin: 0 auto;
 `;
 const StockHolm = styled.div`
   background-color: #fff;
@@ -452,7 +453,7 @@ const StockHolm = styled.div`
   margin-left: 10%;
   margin-top: 10px;
 
-  width: 60%;
+  width: 100%;
   &:hover {
     outline: 1px solid#fafad2;
   }
@@ -479,7 +480,7 @@ const PortFolio = styled.div`
   margin-left: 10%;
   margin-top: 10px;
 
-  width: 60%;
+  width: 100%;
   &:hover {
     outline: 1px solid #fafad2;
   }
