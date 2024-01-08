@@ -1,32 +1,41 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import StockHolmLogo from "../../assets/stockholmLogo.png";
+import { StockHolmView } from "./detailview/stockholmdetail";
+import { PortFolioView } from "./detailview/portfoliodetail";
 import StockHolmIamges from "../../assets/stockholm.png";
 import PortFolioIamges from "../../assets/portfolio.png";
 import { Toggle1, Toggle2, Toggle3, Toggle4 } from "../toggle/toggle";
 
 const Project = () => {
   const [ProjectAnimation, setProjectAnimation] = useState<boolean>(false);
-  const [ModalPort, setModalPortOpen] = useState<boolean>(false);
-  const [ModalStock, setModalStockOpen] = useState<boolean>(false);
-  const [ModalAnimation, setModalAnimation] = useState<boolean>(false);
+  const [DetailViewPort, setDetailViewPort] = useState<boolean>(false);
+  const [DetailViewStock, setDetailViewStock] = useState<boolean>(true);
+  const [Animation, setAnimation] = useState<boolean>(true);
+  const [AnimationPort, setAnimationPort] = useState<boolean>(false);
 
   useEffect(() => {
     setProjectAnimation(true);
   }, []);
 
-  const handleModalStockClick = () => {
-    setModalStockOpen(!ModalStock);
-    setTimeout(() => {
-      setModalAnimation(!ModalAnimation);
-    }, 100);
-  };
-
-  const handleModalPortClick = () => {
-    setModalPortOpen(!ModalPort);
-    setTimeout(() => {
-      setModalAnimation(!ModalAnimation);
-    }, 100);
+  const handleClick = (e: number) => {
+    if (e === 1) {
+      setDetailViewStock(true);
+      setTimeout(() => {
+        setAnimation(true);
+      }, 100);
+    } else {
+      setDetailViewStock(false);
+      setAnimation(false);
+    }
+    if (e === 2) {
+      setDetailViewPort(true);
+      setTimeout(() => {
+        setAnimationPort(true);
+      }, 100);
+    } else {
+      setDetailViewPort(false);
+      setAnimationPort(false);
+    }
   };
 
   return (
@@ -34,36 +43,31 @@ const Project = () => {
       <ProjectContainer ProjectAnimation={ProjectAnimation}>
         <ProjectListContainer>
           <ProjectList>
-            <div style={{ display: "flex", width: "100%" }}>
-              <StockHolm>
-                <StockHolmModal onClick={handleModalStockClick}>
-                  <StockHolmLogoImg src={StockHolmLogo} />
-                  <WebIMG src={StockHolmIamges} />
-
-                  <ModalOpenButton onClick={handleModalStockClick}>
-                    자세히보기
-                  </ModalOpenButton>
-                </StockHolmModal>
-                <Toggle1 />
-                <Toggle2 />
-              </StockHolm>
-              <PortFolio>
-                <PortFolioModal>
-                  <p>PortFolio</p>
-                  <WebIMG
-                    src={PortFolioIamges}
-                    onClick={handleModalPortClick}
-                  />
-                  <ModalOpenButton onClick={handleModalPortClick}>
-                    Open
-                  </ModalOpenButton>
-                </PortFolioModal>
-                <Toggle3 />
-                <Toggle4 />
-              </PortFolio>
-            </div>
+            <StockHolm onClick={() => handleClick(1)}>
+              <WebIMG src={StockHolmIamges} />
+            </StockHolm>
+            <Toggle1 />
+            <Toggle2 />
+          </ProjectList>
+          <ProjectList>
+            <PortFolio>
+              <WebIMG src={PortFolioIamges} onClick={() => handleClick(2)} />
+            </PortFolio>
+            <Toggle3 />
+            <Toggle4 />
           </ProjectList>
         </ProjectListContainer>
+        <DetailViewContainer>
+          <Line>DetailView</Line>
+          <StockHolmView
+            DetailViewStock={DetailViewStock}
+            Animation={Animation}
+          />
+          <PortFolioView
+            DetailViewPort={DetailViewPort}
+            AnimationPort={AnimationPort}
+          />
+        </DetailViewContainer>
       </ProjectContainer>
     </ProjectWrapper>
   );
@@ -75,13 +79,25 @@ const ProjectWrapper = styled.div`
     display: none;
   }
 `;
+const Line = styled.div`
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    border-bottom: 1px solid#c3c3c3;
+  }
+`;
 const ProjectContainer = styled.div<{ ProjectAnimation: boolean }>`
-  margin: 0 auto;
-  margin-top: 60px;
-  width: 100%;
+  width: 90%;
   position: relative;
   opacity: 0;
-  height: 100%;
+  margin: 0 auto;
+
   transform: translateY(20px);
   transition: all 1s;
   &::-webkit-scrollbar {
@@ -99,91 +115,79 @@ const ProjectContainer = styled.div<{ ProjectAnimation: boolean }>`
 `;
 const ProjectListContainer = styled.div`
   width: 90%;
+
   margin: 0 auto;
   margin-top: 80px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  height: 400px;
 `;
-const StockHolmLogoImg = styled.img`
-  width: 65%;
-`;
+
 const WebIMG = styled.img`
   over-fit: contain;
-  width: 100%;
-  height: 200px;
+  width: 90%;
 `;
 
-const PortFolioModal = styled.div`
-  cursor: pointer;
-  width: 100%;
-  p {
-    color: #333;
-    font-size: 30px;
-    font-weight: 900;
-    font-family: "IBM Plex Sans KR", sans-serif;
-  }
-
-  &:hover {
-    & > div {
-      transition: all 0.4s;
-
-      background-color: #fafad2;
-      cursor: pointer;
-    }
-  }
-`;
 const ProjectList = styled.div`
-  margin: 0 auto;
-`;
-const StockHolm = styled.div`
+  display: flex;
+  transition: all.4s;
+
+  &:hover {
+    background-color: #f3f3f3;
+
+    img {
+      transition: all 0.4s;
+      transform: scale(1.1, 1.1);
+    }
+  }
+  flex-direction: column;
+  margin-right: 20px;
+  margin-top: 20px;
   background-color: #fff;
   text-align: center;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px 10px;
-  margin-left: 10%;
-  margin-top: 10px;
 
-  width: 100%;
+  width: 330px;
+  height: 344px;
+
   &:hover {
-    outline: 1px solid#fafad2;
   }
 `;
-const StockHolmModal = styled.div`
+
+const StockHolm = styled.div`
   cursor: pointer;
   width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+  &:hover {
+    & > div {
+      transition: all 0.4s;
+
+      cursor: pointer;
+    }
+  }
+`;
+const PortFolio = styled.div`
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
 
   &:hover {
     & > div {
       transition: all 0.4s;
 
-      background-color: #fafad2;
       cursor: pointer;
     }
   }
 `;
-
-const PortFolio = styled.div`
-  background-color: #fff;
-  text-align: center;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
-  border-radius: 10px 10px;
-  margin-left: 10%;
-  margin-top: 10px;
-
-  width: 100%;
-  &:hover {
-    outline: 1px solid #fafad2;
+const DetailViewContainer = styled.div`
+  &::-webkit-scrollbar {
+    display: none;
   }
-`;
-const ModalOpenButton = styled.div`
-  border-top: 1px solid#c3c3c3;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width: 100%;
+
   margin: 0 auto;
-  &:hover {
-    transition: all 0.4s;
-    background-color: #fafad2;
-    cursor: pointer;
-  }
+  margin-top: 20px;
 `;
