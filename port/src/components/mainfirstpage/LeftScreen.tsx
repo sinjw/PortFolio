@@ -1,4 +1,3 @@
-import ProFile from "../../assets/ProfileImage.png";
 import { useState, useEffect } from "react";
 import { styled, css, keyframes } from "styled-components";
 import { useSelector } from "react-redux";
@@ -27,7 +26,6 @@ const LeftScreen = () => {
 
   return (
     <LeftScreenContainer isClicked={isClicked}>
-      <ProFileImg src={ProFile} />
       <PtagContainer>
         <Ptag1 loadTag={loadTag}>{LeftSCtext.name}</Ptag1>
       </PtagContainer>
@@ -83,30 +81,24 @@ const LeftScreenContainer = styled.div<{ isClicked: boolean }>`
     display: none;
   }
 `;
-const ProFileImg = styled.img`
-  width: 170px;
-  height: 170px;
-  margin-top: 25%;
-
-  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.6));
-`;
 
 const Ptag1 = styled.p<{ loadTag: boolean }>`
   width: 150px;
-  margin-top: 50px;
+  margin-top: 200px;
   font-size: 45px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   color: #333;
 
-  &::before {
+  &::after {
     content: "";
     display: block;
     margin-bottom: 30px;
-    width: 40px;
+    width: 55px;
     height: 5px;
     background-color: #333;
-    margin-left: 36%;
+    margin-top: 50px;
+    margin-left: 32%;
   }
   ${(props) =>
     props.loadTag &&
@@ -184,5 +176,4 @@ const PtagContainer = styled.div`
   display: flex;
 
   justify-content: space-around;
-  margin-top: 20px;
 `;

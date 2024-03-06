@@ -16,8 +16,8 @@ const Intro = () => {
     <IntroConatiner>
       <Router>
         <Navigate>
-          <div>Front-end</div>
-          <StyledLinkContainer>
+          <div style={{ color: "white" }}>Front-end</div>
+          <StyledLinkContainer activeTab={activeTab}>
             <StyledLink
               to="/"
               onClick={() => {
@@ -61,7 +61,7 @@ const IntroConatiner = styled.div`
 `;
 
 const Navigate = styled.div`
-  background-color: #f3f3f3;
+  background-color: #333;
   position: fixed;
   width: 100%;
   height: 60px;
@@ -78,7 +78,7 @@ const Navigate = styled.div`
   }
 `;
 // const TabStyle = styled.div``;
-const StyledLinkContainer = styled.div`
+const StyledLinkContainer = styled.div<{ activeTab: number }>`
   height: 100%;
   width: 300px;
   display: flex;
@@ -97,10 +97,10 @@ const StyledLink = styled(Link)`
   overflow: hidden;
 
   &.active-tab {
-    color: black;
+    color: #fff;
   }
   &.inactive-tab {
-    color: #999;
+    color: #666;
   }
 `;
 

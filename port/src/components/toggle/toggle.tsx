@@ -155,8 +155,85 @@ export const Toggle4 = () => {
     </>
   );
 };
+export const Toggle5 = () => {
+  const [toggles5, setToggles5] = useState<boolean>(false);
+  const handleToggle5 = (e: string) => {
+    if (e === "5") {
+      setToggles5(!toggles5);
+    }
+  };
+  return (
+    <>
+      <TogglePtag>
+        <span>MyMemoApp</span>
 
-export default { Toggle1, Toggle2, Toggle3, Toggle4 };
+        <ProjectName>SoloProject</ProjectName>
+      </TogglePtag>
+      <TogglePtag>
+        <ToggleTitle>
+          <ToggleContainer
+            onClick={() => handleToggle5("5")}
+            toggles={toggles5}
+          >
+            <Toggle
+              toggles={toggles5}
+              onClick={() => handleToggle5("5")}
+            ></Toggle>
+          </ToggleContainer>
+          배포링크
+        </ToggleTitle>
+      </TogglePtag>
+
+      <TogglePtag>
+        <ToggleContentContainer>
+          <ToggleContent
+            href=""
+            target="blank"
+            toggles={toggles5}
+          ></ToggleContent>
+        </ToggleContentContainer>
+      </TogglePtag>
+    </>
+  );
+};
+export const Toggle6 = () => {
+  const [toggles6, setToggles6] = useState<boolean>(false);
+  const handleToggle6 = (e: string) => {
+    if (e === "6") {
+      setToggles6(!toggles6);
+    }
+  };
+  return (
+    <>
+      <TogglePtag>
+        <ToggleTitle>
+          <ToggleContainer
+            onClick={() => handleToggle6("6")}
+            toggles={toggles6}
+          >
+            <Toggle
+              toggles={toggles6}
+              onClick={() => handleToggle6("6")}
+            ></Toggle>
+          </ToggleContainer>
+          Git hub
+        </ToggleTitle>
+      </TogglePtag>
+      <TogglePtag>
+        <ToggleContentContainer>
+          <ToggleContent
+            href="https://github.com/sinjw/MemoApp"
+            target="blank"
+            toggles={toggles6}
+          >
+            https://github.com/sinjw/MemoApp
+          </ToggleContent>
+        </ToggleContentContainer>
+      </TogglePtag>
+    </>
+  );
+};
+export default { Toggle1, Toggle2, Toggle3, Toggle4, Toggle5, Toggle6 };
 
 const Toggle = styled.div<{ toggles: boolean }>`
   cursor: pointer;

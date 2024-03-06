@@ -2,16 +2,27 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { StockHolmView } from "./detailview/stockholmdetail";
 import { PortFolioView } from "./detailview/portfoliodetail";
+import { MyMemoView } from "./detailview/mymemodetail";
 import StockHolmIamges from "../../assets/stockholm.png";
 import PortFolioIamges from "../../assets/portfolio.png";
-import { Toggle1, Toggle2, Toggle3, Toggle4 } from "../toggle/toggle";
+import MyMemoImages from "../../assets/mymemoapp.png";
+import {
+  Toggle1,
+  Toggle2,
+  Toggle3,
+  Toggle4,
+  Toggle5,
+  Toggle6,
+} from "../toggle/toggle";
 
 const Project = () => {
   const [ProjectAnimation, setProjectAnimation] = useState<boolean>(false);
   const [DetailViewPort, setDetailViewPort] = useState<boolean>(false);
   const [DetailViewStock, setDetailViewStock] = useState<boolean>(true);
+  const [DetailViewMemo, setDetailViewMemo] = useState<boolean>(false);
   const [Animation, setAnimation] = useState<boolean>(true);
   const [AnimationPort, setAnimationPort] = useState<boolean>(false);
+  const [AnimationMemo, setAnimationMemo] = useState<boolean>(false);
 
   useEffect(() => {
     setProjectAnimation(true);
@@ -36,6 +47,15 @@ const Project = () => {
       setDetailViewPort(false);
       setAnimationPort(false);
     }
+    if (e === 3) {
+      setDetailViewMemo(true);
+      setTimeout(() => {
+        setAnimationMemo(true);
+      }, 100);
+    } else {
+      setDetailViewMemo(false);
+      setAnimationMemo(false);
+    }
   };
 
   return (
@@ -56,7 +76,15 @@ const Project = () => {
             <Toggle3 />
             <Toggle4 />
           </ProjectList>
+          <ProjectList>
+            <PortFolio>
+              <WebIMG src={MyMemoImages} onClick={() => handleClick(3)} />
+            </PortFolio>
+            <Toggle5 />
+            <Toggle6 />
+          </ProjectList>
         </ProjectListContainer>
+
         <DetailViewContainer>
           <Line>DetailView</Line>
           <StockHolmView
@@ -66,6 +94,10 @@ const Project = () => {
           <PortFolioView
             DetailViewPort={DetailViewPort}
             AnimationPort={AnimationPort}
+          />
+          <MyMemoView
+            DetailViewMemo={DetailViewMemo}
+            AnimationMemo={AnimationMemo}
           />
         </DetailViewContainer>
       </ProjectContainer>
@@ -97,7 +129,6 @@ const ProjectContainer = styled.div<{ ProjectAnimation: boolean }>`
   position: relative;
   opacity: 0;
   margin: 0 auto;
-
   transform: translateY(20px);
   transition: all 1s;
   &::-webkit-scrollbar {
@@ -115,18 +146,18 @@ const ProjectContainer = styled.div<{ ProjectAnimation: boolean }>`
 `;
 const ProjectListContainer = styled.div`
   width: 90%;
-
   margin: 0 auto;
   margin-top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 400px;
+  height: 450px;
 `;
 
 const WebIMG = styled.img`
   over-fit: contain;
   width: 90%;
+  height: 140px;
 `;
 
 const ProjectList = styled.div`
@@ -149,9 +180,9 @@ const ProjectList = styled.div`
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px 10px;
 
-  width: 330px;
-  height: 344px;
+  width: 250px;
 
+  max-height: 300px;
   &:hover {
   }
 `;

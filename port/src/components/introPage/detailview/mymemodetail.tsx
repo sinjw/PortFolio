@@ -1,55 +1,51 @@
 import styled from "styled-components";
-import StockWebImg from "../../../assets/stockholm.png";
-export const StockHolmView = ({ DetailViewStock, Animation }: props) => {
-  const detailViewStock = DetailViewStock;
-  const animation = Animation;
+import MyMemoapp from "../../../assets/mymemoapp.png";
+export const MyMemoView = ({ DetailViewMemo, AnimationMemo }: props) => {
+  const detailViewMemo = DetailViewMemo;
+  const animation = AnimationMemo;
   return (
-    <ProjectWrapper detailViewStock={detailViewStock} animation={animation}>
+    <ProjectWrapper detailViewMemo={detailViewMemo} animation={animation}>
       <DetailViewContainer>
-        <StockHolmWebImg src={StockWebImg} />
+        <StockHolmWebImg src={MyMemoapp} />
         <PorjectTextContainer>
           <ProjectIntro>
             <h3>프로젝트 소개</h3>
             <p>
-              StockHolm은 스웨덴의 수도의 이름을 이용해서 모의 주식 사이트를
-              주식(Stock) + 섬(Holm)이라는 의미를 가지도록 표현한 이름입니다
-              모의 주식 투자를 목적으로 만들어진 사이트이며 주식시장의 Open
-              API를 활용해서 주식정보를 받아와 차트로 그려내었습니다 또한 단일
-              페이지로 이루어져있고 OAuth2.0을통해 구글로그인 기능과 이메일인증
-              기능을 구현 하였습니다 그리고 이 사이트는 한페이지 안에서 여러가지
-              기능들을 수행 할 수 있도록 만들었습니다 .
+              MyMemoApp은 리액트네이티브를 이용해서 어플리케이션의 형식으로 만든
+              간단한 기능들만 사용하는 앱입니다. 과거에 배웠던 엑스포를 활용해서
+              앱을 만들고 베포하기 까지의 과정을 답습해보고싶어서 복잡하기보단
+              간단하고 복습해 볼 수 있도록하기위해 만들게되었습니다. 메모 저장
+              기능은 AsyncStorage를사용해서 저장 하도록 하였고 캘린더와
+              연동시켜서 당일작성한 메모를 캘린더를통해 확인 할 수있는 기능을
+              구현 하였습니다.
             </p>
           </ProjectIntro>
           <ProJectReview>
             <h3>프로젝트 후기</h3>
 
             <p>
-              처음 계획 했던것들에 비해서 모든 기능들을 구현하기에는 시간이
-              부족했고 이로인해서 개발 기간을 조금 더 보수적으로 잡아야 좋다는
-              것을 깨닫게 되었습니다 제가 맡아서 작업했던 부분은 오른쪽파트의
-              탭기능을 활용한 기능구현을 맡았습니다 게시판기능을 진행할때
-              AXIOS를이용해 서버와의 CRUD 기능을만들면서 게시글 삭제부분에서의
-              오류가 있었는데 그부분을 구글링을 통해 해결해나가면서 서버와의
-              통신개념에 대한 이해도를 조금 높힐 수 있었습니다. 아쉬웠던 점은
-              디자인 적인 부분과 처음생각했던 기능들을 전부 구현해내지 못한게
-              아쉬웠습니다.
+              처음 계획했던 기능들이 아직 남아있어서 계속 추가하면서 앱을 좀더
+              발전 시킬 계획입니다. 여러가지 새로운 아이디어나 기능들이
+              떠오르게되면 연습하면서 수정하고 계속 업데이트할 계획입니다. 처음
+              이 프로젝트를 만들때는 리액트네이티브 문법이나 여러가지 사용하는
+              방법들이 떠오르지않아 알아보고 찾아보는데에 시간을 많이 사용했지만
+              그래도 재미있게 작업 할 수 있었고 차차 코드를 효율적으로
+              바꿔나가면서 지속적으로 다듬어가는 중인 앱입니다
             </p>
             <ProjectIntro>
               <h3>기술스택</h3>
             </ProjectIntro>
             <p style={{ display: "flex", flexWrap: "wrap" }}>
-              <SkillStackStyle>React</SkillStackStyle>
+              <SkillStackStyle>ReactNative</SkillStackStyle>
               <SkillStackStyle>TypeScirpt</SkillStackStyle>
               <SkillStackStyle>JavaScript</SkillStackStyle>
-              <SkillStackStyle>Axios</SkillStackStyle>
+              <SkillStackStyle>AsyncStorage</SkillStackStyle>
               <SkillStackStyle>HTML5</SkillStackStyle>
               <SkillStackStyle>CSS</SkillStackStyle>
-              <SkillStackStyle>VITE</SkillStackStyle>
-              <SkillStackStyle>ApacheECharts</SkillStackStyle>
-              <SkillStackStyle>Figma</SkillStackStyle>
+              <SkillStackStyle>EXPO</SkillStackStyle>
+              <SkillStackStyle>BigCalendar</SkillStackStyle>
               <SkillStackStyle>Redux/toolkit</SkillStackStyle>
-              <SkillStackStyle>AmazonS3</SkillStackStyle>
-              <SkillStackStyle>styledComponent</SkillStackStyle>
+              <SkillStackStyle>AndroidStudio</SkillStackStyle>
             </p>
           </ProJectReview>
         </PorjectTextContainer>
@@ -58,12 +54,12 @@ export const StockHolmView = ({ DetailViewStock, Animation }: props) => {
   );
 };
 interface props {
-  DetailViewStock: boolean;
-  Animation: boolean;
+  DetailViewMemo: boolean;
+  AnimationMemo: boolean;
 }
 
 const ProjectWrapper = styled.div<{
-  detailViewStock: boolean;
+  detailViewMemo: boolean;
   animation: boolean;
 }>`
   display: none;
@@ -74,7 +70,7 @@ const ProjectWrapper = styled.div<{
   opacity: 0;
 
   ${(props) =>
-    props.detailViewStock &&
+    props.detailViewMemo &&
     `
   display:block;
 

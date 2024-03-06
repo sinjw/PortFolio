@@ -14,7 +14,7 @@ import githublogo from "../../assets/github.png";
 import htmllogo from "../../assets/html.png";
 import javascriptlogo from "../../assets/javascript.png";
 import postmanlogo from "../../assets/postman.png";
-import pythonlogo from "../../assets/python.png";
+
 import reactlogo from "../../assets/react.png";
 import reduxlogo from "../../assets/redux.png";
 import sasslogo from "../../assets/sass.png";
@@ -93,8 +93,8 @@ const About = () => {
           className={buttonClick ? "activeSkill" : "inactiveSkill"}
         >
           <h1>Skill</h1>
-          <Skills>
-            <Skill1>
+          <Skill>
+            <Skills>
               <Skill1Ptag>주로 사용했어요</Skill1Ptag>
               <LogoContainer>
                 <Logobox>
@@ -119,8 +119,8 @@ const About = () => {
                   <span>Styled-Component</span>
                 </Logobox>
               </LogoContainer>
-            </Skill1>
-            <Skill2>
+            </Skills>
+            <Skills>
               <Skill1Ptag>조금은 다룰 줄 알아요</Skill1Ptag>
               <LogoContainer>
                 <Logobox>
@@ -148,19 +148,16 @@ const About = () => {
                   <span>TypeScript</span>
                 </Logobox>
               </LogoContainer>
-            </Skill2>
-            <Skill3>
+            </Skills>
+            <Skills>
               <Skill1Ptag>한번쯤 사용해 봤어요</Skill1Ptag>
               <LogoContainer>
-                <Logobox>
-                  <SkillImage src={pythonlogo} /> <span>Python</span>
-                </Logobox>
                 <Logobox>
                   <SkillImage src={reactlogo} /> <span>ReactNative</span>
                 </Logobox>
               </LogoContainer>
-            </Skill3>
-          </Skills>
+            </Skills>
+          </Skill>
         </SkillContainer>
         <ScrollDown scrolling={scrolling}>
           Scroll
@@ -307,8 +304,8 @@ to {
 
 const ProfileContainer = styled.div`
   &.activeProfile {
-    width: 90%;
-    height: 440px;
+    width: 75%;
+    height: 400px;
     margin: 0 auto;
     margin-top: 60px;
     display: flex;
@@ -332,9 +329,9 @@ const ProfileContainer = styled.div`
 `;
 const SkillContainer = styled.div`
   &.activeSkill {
-    width: 90%;
+    width: 75%;
     color: white;
-    height: 450px;
+    height: 420px;
     margin: 0 auto;
     margin-top: 60px;
     display: flex;
@@ -342,9 +339,7 @@ const SkillContainer = styled.div`
     align-items: center;
     background-size: contain;
     background-image: url(${ProFileBackground2});
-
     background-position: center;
-
     transition: all 0.4s;
     border-radius: 10px 10px;
     position: relative;
@@ -361,7 +356,7 @@ const SkillContainer = styled.div`
   }
 `;
 
-const Skills = styled.div`
+const Skill = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -369,7 +364,7 @@ const Skills = styled.div`
   height: 80%;
   justify-content: space-around;
   p {
-    font-size: 20px;
+    font-size: 18px;
     font-family: "IBM Plex Sans KR", sans-serif;
   }
   @media (max-width: 500px) {
@@ -382,7 +377,7 @@ const LogoContainer = styled.div`
   display: flex;
   width: 95%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   flex-wrap: wrap;
   justify-content: space-evenly;
 `;
@@ -397,8 +392,11 @@ const Logobox = styled.div`
   border-radius: 20px 20px;
 
   height: 30px;
-  p {
-    font-size: 20px;
+  &:hover {
+    background-color: #ccc;
+  }
+  span {
+    font-size: 13px;
     margin-left: 8px;
   }
   @media (max-width: 500px) {
@@ -406,54 +404,28 @@ const Logobox = styled.div`
   }
 `;
 const SkillImage = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 15px;
   @media (max-width: 500px) {
     width: 20px;
     height: 20px;
   }
 `;
-const Skill1 = styled.div`
-  height: 320px;
+const Skills = styled.div`
+  height: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   width: 30%;
-
   border-radius: 20px 20px;
-  border-top: 1px solid#666;
-  border-left: 1px solid#666;
-  border-right: 2px solid#ececec;
-  border-bottom: 2px solid#ececec;
+  border: 1px solid#666;
 `;
 const Skill1Ptag = styled.p`
-  height: 50px;
+  height: 30px;
   margin-top: 20px;
 `;
-const Skill2 = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  height: 320px;
 
-  border-radius: 20px 20px;
-  border-top: 1px solid#666;
-  border-left: 1px solid#666;
-  border-right: 2px solid#ececec;
-  border-bottom: 2px solid#ececec;
-`;
-const Skill3 = styled.div`
-  text-align: center;
-  width: 30%;
-  height: 320px;
-  border-top: 1px solid#666;
-  border-left: 1px solid#666;
-  border-right: 2px solid#ececec;
-  border-bottom: 2px solid#ececec;
-  border-radius: 20px 20px;
-`;
 const ProfileContent = styled.div`
   display: flex;
   align-items: center;
@@ -511,11 +483,11 @@ const AboutText = styled.div`
   margin-top: 5%;
   width: 60%;
   p {
-    font-size: 25px;
+    font-size: 20px;
     font-family: "IBM Plex Sans KR", sans-serif;
     font-weight: 400;
     margin-bottom: 50px;
-    line-height: 40px;
+    line-height: 35px;
     color: #535353;
 
     span {
